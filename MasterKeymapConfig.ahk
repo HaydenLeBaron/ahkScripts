@@ -148,7 +148,7 @@ CapsLock &  p::Send !{Tab}
 ^<!m::
     Send #r
     WinWait, Run
-    Send firefox https://messages.google.com/web/conversations?redirected=true {Enter}
+    Send firefox https://messages.google.com/web/conversations{Enter}
     return
 
 
