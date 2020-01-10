@@ -144,6 +144,12 @@ CapsLock &  p::Send !{Tab}
     Send firefox todoist.com {Enter}
     return
 
+;; Launch _M_essages
+^<!m::
+    Send #r
+    WinWait, Run
+    Send firefox https://messages.google.com/web/conversations?redirected=true {Enter}
+    return
 
 
 ;;;;;;;;;;
