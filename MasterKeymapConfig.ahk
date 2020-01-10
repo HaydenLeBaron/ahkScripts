@@ -41,10 +41,10 @@ AppsKey:: Send hello
 <!k:: Send {Down}
 
 ;; Move cursor by word (lr) / 5 lines (ud)
-^<!j:: Send ^{Left}
-^<!;:: Send ^{Right}
-^<!l:: Send {Up}{Up}{Up}{Up}{Up}
-^<!k:: Send {Down}{Down}{Down}{Down}{Down}
+AppsKey & j:: Send ^{Left}
+AppsKey & `;:: Send ^{Right}
+AppsKey & l:: Send {Up}{Up}{Up}{Up}{Up}
+AppsKey & k:: Send {Down}{Down}{Down}{Down}{Down}
 
 ;; Move cursor once -- while highlighting
 +<!j:: Send +{Left}
@@ -116,16 +116,16 @@ CapsLock &  p::Send !{Tab}
 ;; firefox-dev := "C:\Program Files\Firefox Developer Edition\firefox.exe" TODO: use variables for default browsers.
 
 ;; Launch windows _T_erminal
-^<!t::
+AppsKey & t::
     Run, wt.exe
     ;TODO: add `WinWait, windowTitle`
     WinActivate
     return
 ;; Launch _B_rowser
-^<!b::Run, firefox.exe
+AppsKey & b::Run, firefox.exe
 
 ;; Launch _I_nstructure canvas
-^<!i::
+AppsKey & i::
     Send #r
     WinWait, Run
     ;; TODO: replace with browser variable
@@ -133,28 +133,28 @@ CapsLock &  p::Send !{Tab}
     return
 
 ;; Launch google _C_alendar
-^<!c::
+AppsKey & c::
     Send #r
     WinWait, Run
     Send firefox https://calendar.google.com/calendar/ {Enter}
     return
 
 ;; Launch to_D_oist
-^<!d::
+AppsKey & d::
     Send #r
     WinWait, Run
     Send firefox todoist.com {Enter}
     return
 
 ;; Launch _M_essages
-^<!m::
+AppsKey & m::
     Send #r
     WinWait, Run
     Send firefox https://messages.google.com/web/conversations{Enter}
     return
 
 ;; Launch _V_s code
-^<!v::
+AppsKey & v::
     Send #r
     WinWait, Run
     Send code{Enter}
