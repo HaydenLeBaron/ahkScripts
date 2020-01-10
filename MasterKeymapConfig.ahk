@@ -68,7 +68,7 @@ AppsKey::MsgBox, AHK: You just hit the apps key!
 <!+h:: Send +{Home}
 <!+':: Send +{End}
 <!+,:: Send ^+{End}			
-<!o+:: Send ^+{Home}
+<!+o:: Send ^+{Home}
 
 
 ;;;;;;;;;;
@@ -101,6 +101,18 @@ CapsLock &  p::Send !{Tab}
 ;; Launch Macros
 ;;;;;;;;;;
 
+;; NOTE on web browsers
+;;
+;; Different browsers are used for different kinds of service to make it easier to find the right
+;; browser window when managing windows, and also to make it easier for rescuetime to categorize time.
+;;
+;; Firefox -- used for standalone productive "apps". e.g: gmail, todoist, google calendar, rescuetime, etc
+;; Firefox Developer -- used to launch productive sites that are not standalone apps. e.g.: canvas
+;; Chrome -- used to launch neutral productivity things 
+
+
+;; firefox-dev := "C:\Program Files\Firefox Developer Edition\firefox.exe" TODO: use variables for default browsers.
+
 ;; Launch windows _T_erminal
 ^<!t::
     Run, wt.exe
@@ -114,7 +126,8 @@ CapsLock &  p::Send !{Tab}
 ^<!i::
     Send #r
     WinWait, Run
-    Send https://go.utah.edu/cas/login?service=https`%3A`%2F`%2Fincommon2.sso.utah.edu`%2Fidp`%2FAuthn`%2FExtCas`%3Fconversation`%3De4s1&entityId=http`%3A`%2F`%2Futah.instructure.com`%2Fsaml2 {Enter}
+    ;; TODO: replace with browser variable
+    Send C:\Program Files\Firefox Developer Edition\firefox.exe https://go.utah.edu/cas/login?service=https`%3A`%2F`%2Fincommon2.sso.utah.edu`%2Fidp`%2FAuthn`%2FExtCas`%3Fconversation`%3De4s1&entityId=http`%3A`%2F`%2Futah.instructure.com`%2Fsaml2 {Enter}
     return
 
 ;; Launch google _C_alendar
@@ -123,6 +136,14 @@ CapsLock &  p::Send !{Tab}
     WinWait, Run
     Send firefox https://calendar.google.com/calendar/ {Enter}
     return
+
+;; Launch to_D_oist
+^<!d::
+    Send #r
+    WinWait, Run
+    Send firefox todoist.com {Enter}
+    return
+
 
 
 ;;;;;;;;;;
