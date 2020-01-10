@@ -27,7 +27,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 
 ;; Test AppsKey
-AppsKey::MsgBox, AHK: You just hit the apps key!
+AppsKey:: Send hello
 
 ;;;;;;;;;;
 ;; KEYBOARD CURSOR NAVIGATION
@@ -101,6 +101,8 @@ CapsLock &  p::Send !{Tab}
 ;; Launch Macros
 ;;;;;;;;;;
 
+;; TODO: for apps: check to see if the app is open. If so, navigate to that app. Else open a new instance of the app.
+
 ;; NOTE on web browsers
 ;;
 ;; Different browsers are used for different kinds of service to make it easier to find the right
@@ -152,8 +154,8 @@ CapsLock &  p::Send !{Tab}
     return
 
 ;; Launch _V_s code
-^<!c::
-    Send #v
+^<!v::
+    Send #r
     WinWait, Run
     Send code{Enter}
     return
