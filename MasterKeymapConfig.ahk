@@ -151,6 +151,12 @@ CapsLock &  p::Send !{Tab}
     Send firefox https://messages.google.com/web/conversations{Enter}
     return
 
+;; Launch _V_s code
+^<!c::
+    Send #v
+    WinWait, Run
+    Send code{Enter}
+    return
 
 ;;;;;;;;;;
 ;; OTHER
