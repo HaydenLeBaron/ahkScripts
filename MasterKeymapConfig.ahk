@@ -18,16 +18,22 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; 2. 
 
 ;; MOD KEYS
-; mod key 1: Capslock
-; mod key 2: <! (Left ALt)
+; Capslock -- for window management
+; AppsKey -- for launching apps
+; <! (Left ALt) -- for cursor movement
+
 
 ;;;;;;;;;;
 ;; TEST
 ;;;;;;;;;;
 
 
-;; Test AppsKey
-AppsKey:: Send hello
+;;;;;;;;;;
+;; SIMPLE KEY REMAPS
+;;;;;;;;;;
+
+>!:: Send {Esc}{Alt}
+
 
 ;;;;;;;;;;
 ;; KEYBOARD CURSOR NAVIGATION
@@ -114,6 +120,9 @@ CapsLock &  p::Send !{Tab}
 
 
 ;; firefox-dev := "C:\Program Files\Firefox Developer Edition\firefox.exe" TODO: use variables for default browsers.
+
+;; Launch Run
+AppsKey:: Send #r
 
 ;; Launch windows _T_erminal
 AppsKey & t::
