@@ -47,10 +47,10 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 <!k:: Send {Down}
 
 ;; Move cursor by word (lr) / 5 lines (ud)
-AppsKey & j:: Send ^{Left}
-AppsKey & `;:: Send ^{Right}
-AppsKey & l:: Send {Up}{Up}{Up}{Up}{Up}
-AppsKey & k:: Send {Down}{Down}{Down}{Down}{Down}
+^<!j:: Send ^{Left}
+^<!`;:: Send ^{Right}
+^<!l:: Send {Up}{Up}{Up}{Up}{Up}
+^<!k:: Send {Down}{Down}{Down}{Down}{Down}
 
 ;; Move cursor once -- while highlighting
 +<!j:: Send +{Left}
