@@ -41,8 +41,26 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;# SIMPLE KEY REMAPS
 ;#######################################################################################################################
 
-SetCapsLockState,  AlwaysOff    ;; disable CapsLock
-CapsLock::Send, {Esc}           ;; Caplock => Esc
+
+CapsLock::SendInput, {Esc}           ;; Caplock => Esc ; TODO: fixme
+
+;; Shift + Esc => Toggle Capslock
++Esc::
+    state := GetKeyState("Capslock", "T")  ; 1 if CapsLock is ON, 0 otherwise.
+    if state = 1
+    {
+        SetCapsLockState, AlwaysOff
+    }
+    else
+    {
+        SetCapsLockState, On
+    }
+    return
+
+
+Delete::Send {LWin down}
+Delete Up::Send {LWin up}
+
 
 ;#######################################################################################################################
 ;# KEYBOARD CURSOR NAVIGATION AND EDITING
