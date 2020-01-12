@@ -140,7 +140,7 @@ AppsKey & i::
     Send #r
     WinWait, Run
     ;; TODO: replace with browser variable
-    Send C:\Program Files\Firefox Developer Edition\firefox.exe https://go.utah.edu/cas/login?service=https`%3A`%2F`%2Fincommon2.sso.utah.edu`%2Fidp`%2FAuthn`%2FExtCas`%3Fconversation`%3De4s1&entityId=http`%3A`%2F`%2Futah.instructure.com`%2Fsaml2 {Enter}
+    Send C:\Program Files\Firefox Developer Edition\firefox.exe https://utah.instructure.com/?login_success=1{Enter}
     return
 
 ;; Launch google _C_alendar
