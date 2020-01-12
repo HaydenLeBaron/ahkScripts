@@ -43,11 +43,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 SetCapsLockState,  AlwaysOff    ;; disable CapsLock
 CapsLock::Send, {Esc}           ;; Caplock => Esc
-;; <!BackSpace:: SendInput, {Delete}
-
 
 ;#######################################################################################################################
-;# KEYBOARD CURSOR NAVIGATION
+;# KEYBOARD CURSOR NAVIGATION AND EDITING
 ;#######################################################################################################################
 
 
@@ -86,6 +84,15 @@ CapsLock::Send, {Esc}           ;; Caplock => Esc
 <!+':: Send +{End}
 <!+,:: Send ^+{End}			
 <!+o:: Send ^+{Home}
+
+;; Backpace/Delete
+<!Space:: SendInput, {BackSpace}    ; Back by char
++<!Space:: SendInput, {Delete}      ; Del  by char
+^<!Space:: SendInput, ^{BackSpace}   ; Back by word
+^+<!Space:: SendInput, ^{Delete}     ; Del  by word
+
+;; Send 4 spaces
++Space:: Send, {Space}{Space}{Space}{Space}
 
 
 ;#######################################################################################################################
