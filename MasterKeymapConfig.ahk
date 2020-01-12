@@ -1,42 +1,54 @@
-﻿;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; HAYDEN'S WINDOWS 10 CONFIG
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+﻿;#######################################################################################################################
+;#######################################################################################################################
+;# HAYDEN'S WINDOWS 10 KEY & MOUSE CONFIG
+;#######################################################################################################################
+;#######################################################################################################################
 
-SetCapsLockState,  AlwaysOff ; disable CapsLock
-CapsLock::Send, {Esc}
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-;;;;;;;;;;
-;; NOTES
-;;;;;;;;;;
+;#######################################################################################################################
+;# NOTES
+;#######################################################################################################################
 
 ;; DESIGN GOALS
-; 1. minimize collisions with existing keyboard shortcuts (this means no using Ctrl)
-; 2. 
+; 1. Minimize collisions with existing keyboard shortcuts
+; 2. Separate shortcut types into "channels", where shortcuts of the same category
+;    lie on the same channel and are triggered by the same modkey/modkey-combination.
+; 3. Mnemonics
+; 4. Ergonomics: Frequently used shortcuts should be easy to trigger rapidly and
+;    repeatedly without strain. Infrequently used shortcuts can be more cumbersome.
 
 ;; MOD KEYS
-; Capslock -- for window management
-; AppsKey -- for launching apps
-; <! (Left ALt) -- for cursor movement
+; * Capslock -- for window management
+; * AppsKey -- for launching apps and macros
+; * <! (Left Alt) -- for cursor movement
+; * >! (Right Alt) -- TODO: figure out channel for right alt
 
 
-;;;;;;;;;;
-;; TEST
-;;;;;;;;;;
+;#######################################################################################################################
+;# TEST AND TODO
+;#######################################################################################################################
 
-// TODO: change lots of `Send`s to `SendInput`
-;;;;;;;;;;
-;; SIMPLE KEY REMAPS
-;;;;;;;;;;
+; TODO: change lots of `Send`s to `SendInput`
 
 
-;;;;;;;;;;
-;; KEYBOARD CURSOR NAVIGATION
-;;;;;;;;;;
+
+;#######################################################################################################################
+;# SIMPLE KEY REMAPS
+;#######################################################################################################################
+
+SetCapsLockState,  AlwaysOff    ;; disable CapsLock
+CapsLock::Send, {Esc}           ;; Caplock => Esc
+;; <!BackSpace:: SendInput, {Delete}
+
+
+;#######################################################################################################################
+;# KEYBOARD CURSOR NAVIGATION
+;#######################################################################################################################
 
 
 ;; Move cursor once
@@ -76,51 +88,69 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 <!+o:: Send ^+{Home}
 
 
-;;;;;;;;;;
-;; WINDOW MANAGEMENT
-;;;;;;;;;;
+;#######################################################################################################################
+;# WINDOW MANAGEMENT
+;#######################################################################################################################
 
-;;; SNAP WINDOWS ;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+; SNAP WINDOWS
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Snap current window left
 CapsLock & j::Send {LWin down}{Left}
 CapsLock & j Up::Send {LWin up}{Left}
+
 ;; Snap current window right
 CapsLock & `;::Send {LWin down}{Right}
 CapsLock & `; Up::Send {LWin up}{Right}
+
 ;; Snap current window down
 CapsLock & k::Send {LWin down}{Down}
 CapsLock & k Up::Send {LWin up}{Down}
+
 ;; Snap current window up
 CapsLock & l::Send {LWin down}{Up}
 CapsLock & l Up::Send {LWin up}{Up}
 
-;;; CYCLE WINDOWS ;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+; CYCLE WINDOWS
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; cycle left a window (less recent) // TODO: figure out a way to display window graphic
 CapsLock & u::Send {Alt down}+{Tab}
 CapsLock & u Up::Send {Alt up}
-;; cycle right a window (more recent) // TODO: make both forms of cycle match
+
+;; cycle right a window (more recent)
 CapsLock & p::Send {Alt down}{Tab}
 CapsLock & p Up::Send {Alt up}
 
-;;; DESKTOP ENVIRONMENTS ;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+; DESKTOP ENVIRONMENTS
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Open Desktops overview
 CapsLock & Space::Send #{Tab}
+
 ;; Cycle left a desktop environment
 #if GetKeyState("Shift", "P")
     CapsLock & j::Send ^#{Left}
+
 ;; Cycle right a desktop environment
 #if GetKeyState("Shift", "P")
     CapsLock & `;::Send ^#{Right}
 
 
-;;; OTHER ;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+; OTHER
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 CapsLock & x:: Send !{F4} ;; Close the current window
 CapsLock & d:: Send #d ;; Show desktop
 
 
-;;;;;;;;;;
-;; Launch Macros
-;;;;;;;;;;
+;#######################################################################################################################
+;# LAUNCH MACROS
+;#######################################################################################################################
 
 ;; TODO: for apps: check to see if the app is open. If so, navigate to that app. Else open a new instance of the app.
 
@@ -136,19 +166,19 @@ CapsLock & d:: Send #d ;; Show desktop
 
 ;; firefox-dev := "C:\Program Files\Firefox Developer Edition\firefox.exe" TODO: use variables for default browsers.
 
-;; Launch _R_un
+;; Run
 AppsKey:: Send #r
 
-;; Launch windows _T_erminal
+;; Terminal
 AppsKey & t::
     Run, wt.exe
     ;TODO: add `WinWait, windowTitle`
     WinActivate
     return
-;; Launch _B_rowser
+;; (Productive) Browser
 AppsKey & b::Run, C:\Program Files\Firefox Developer Edition\firefox.exe
 
-;; Launch _I_nstructure canvas
+;; Instructure Canvas
 AppsKey & i::
     Send #r
     WinWait, Run
@@ -156,40 +186,38 @@ AppsKey & i::
     Send C:\Program Files\Firefox Developer Edition\firefox.exe https://utah.instructure.com/?login_success=1{Enter}
     return
 
-;; Launch google _C_alendar
+;; Google Calendar
 AppsKey & c::
     Send #r
     WinWait, Run
     Send firefox https://calendar.google.com/calendar/{Enter}
     return
 
-;; Launch to_D_oist
+;; ToDoist
 AppsKey & d::
     Send #r
     WinWait, Run
     Send firefox todoist.com {Enter}
     return
 
-;; Launch _M_essages
+;; Messages
 AppsKey & m::
     Send #r
     WinWait, Run
     Send firefox https://messages.google.com/web/conversations{Enter}
     return
 
-;; Launch _V_s code
+;; VS Code
 AppsKey & v::
     Send #r
     WinWait, Run
     Send code{Enter}
     return
 
-;;;;;;;;;;
-;; OTHER
-;;;;;;;;;;
+;#######################################################################################################################
+;# OTHER HOTKEYS
+;#######################################################################################################################
 
 ^+Escape::
     ExitApp
     return
-
-
