@@ -27,22 +27,16 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; * AppsKey -- for launching apps and macros
 ; * <! (Left Alt) -- for cursor movement
 ; * >! (Right Alt) -- TODO: figure out channel for right alt
-
-
-;#######################################################################################################################
-;# TEST AND TODO
-;#######################################################################################################################
-
-; TODO: change lots of `Send`s to `SendInput`
-
+; * LWin -- (The regular function has been replaced by Del)
+; * Backspace -- (Regular function replaced elsewhere)
 
 
 ;#######################################################################################################################
 ;# SIMPLE KEY REMAPS
 ;#######################################################################################################################
 
-
-CapsLock::SendInput, {Esc}           ;; Caplock => Esc ; TODO: fixme
+;; Caplock => Esc
+CapsLock::SendInput, {Esc}
 
 ;; Shift + Esc => Toggle Capslock
 +Esc::
@@ -57,9 +51,18 @@ CapsLock::SendInput, {Esc}           ;; Caplock => Esc ; TODO: fixme
     }
     return
 
-
+;; Del => Virtual Windows Keypress
 Delete::Send {LWin down}
 Delete Up::Send {LWin up}
+
+LWin::return ; TODO: Implement LWin Mod key
+Backspace::return ; TODO: implement Backspace mod key
+
+;#######################################################################################################################
+;# TEST AND TODO
+;#######################################################################################################################
+
+; TODO: change lots of `Send`s to `SendInput`
 
 
 ;#######################################################################################################################
@@ -110,7 +113,7 @@ Delete Up::Send {LWin up}
 ^+<!Space:: SendInput, ^{Delete}     ; Del  by word
 
 ;; Send 4 spaces
-+Space:: Send, {Space}{Space}{Space}{Space}
+^+Space:: Send, {Space}{Space}{Space}{Space}
 
 
 ;#######################################################################################################################
