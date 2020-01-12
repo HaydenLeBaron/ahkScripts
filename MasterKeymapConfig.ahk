@@ -32,8 +32,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;; SIMPLE KEY REMAPS
 ;;;;;;;;;;
 
->!:: Send {Esc}{Alt}
-
 
 ;;;;;;;;;;
 ;; KEYBOARD CURSOR NAVIGATION
@@ -102,6 +100,10 @@ CapsLock & u Up::Send {Alt up}+{Tab}
 ;; cycle right a window (more recent) // TODO: make both forms of cycle match
 CapsLock &  p::Send !{Tab}
 
+;;; OTHER ;;;
+CapsLock & x:: Send !{F4} ;; Close the current window
+CapsLock & d:: Send #d ;; Show desktop
+
 
 ;;;;;;;;;;
 ;; Launch Macros
@@ -131,7 +133,7 @@ AppsKey & t::
     WinActivate
     return
 ;; Launch _B_rowser
-AppsKey & b::Run, firefox.exe
+AppsKey & b::Run, C:\Program Files\Firefox Developer Edition\firefox.exe
 
 ;; Launch _I_nstructure canvas
 AppsKey & i::
