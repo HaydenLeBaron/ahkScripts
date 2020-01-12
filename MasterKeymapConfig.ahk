@@ -3,6 +3,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 SetCapsLockState,  AlwaysOff ; disable CapsLock
+CapsLock::Send, {Esc}
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
@@ -27,7 +28,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;; TEST
 ;;;;;;;;;;
 
-
+// TODO: change lots of `Send`s to `SendInput`
 ;;;;;;;;;;
 ;; SIMPLE KEY REMAPS
 ;;;;;;;;;;
@@ -94,11 +95,23 @@ CapsLock & l::Send {LWin down}{Up}
 CapsLock & l Up::Send {LWin up}{Up}
 
 ;;; CYCLE WINDOWS ;;;
-;; cycle left a window (less recent) // TODO: figure out a way to display window raphic
+;; cycle left a window (less recent) // TODO: figure out a way to display window graphic
 CapsLock & u::Send {Alt down}+{Tab}
-CapsLock & u Up::Send {Alt up}+{Tab}
+CapsLock & u Up::Send {Alt up}
 ;; cycle right a window (more recent) // TODO: make both forms of cycle match
-CapsLock &  p::Send !{Tab}
+CapsLock & p::Send {Alt down}{Tab}
+CapsLock & p Up::Send {Alt up}
+
+;;; DESKTOP ENVIRONMENTS ;;;
+;; Open Desktops overview
+CapsLock & Space::Send #{Tab}
+;; Cycle left a desktop environment
+#if GetKeyState("Shift", "P")
+    CapsLock & j::Send ^#{Left}
+;; Cycle right a desktop environment
+#if GetKeyState("Shift", "P")
+    CapsLock & `;::Send ^#{Right}
+
 
 ;;; OTHER ;;;
 CapsLock & x:: Send !{F4} ;; Close the current window
@@ -123,7 +136,7 @@ CapsLock & d:: Send #d ;; Show desktop
 
 ;; firefox-dev := "C:\Program Files\Firefox Developer Edition\firefox.exe" TODO: use variables for default browsers.
 
-;; Launch Run
+;; Launch _R_un
 AppsKey:: Send #r
 
 ;; Launch windows _T_erminal
@@ -147,7 +160,7 @@ AppsKey & i::
 AppsKey & c::
     Send #r
     WinWait, Run
-    Send firefox https://calendar.google.com/calendar/ {Enter}
+    Send firefox https://calendar.google.com/calendar/{Enter}
     return
 
 ;; Launch to_D_oist
