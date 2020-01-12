@@ -3,7 +3,7 @@
 ;# HAYDEN'S WINDOWS 10 KEY & MOUSE CONFIG
 ;#######################################################################################################################
 ;#######################################################################################################################
-
+SetCapsLockState, AlwaysOff ; Necessary for implementation of ToggleCapsLock later // TODO: removemme?
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
@@ -56,7 +56,10 @@ Delete::Send {LWin down}
 Delete Up::Send {LWin up}
 
 LWin::return ; TODO: Implement LWin Mod key
-Backspace::return ; TODO: implement Backspace mod key
+
+;; Backspace as Ctrl + Shift key
+Backspace::Send {Ctrl down}
+Backspace Up::Send {Ctrl up}
 
 ;#######################################################################################################################
 ;# TEST AND TODO
@@ -107,8 +110,8 @@ Backspace::return ; TODO: implement Backspace mod key
 <!+o:: Send ^+{Home}
 
 ;; Backpace/Delete
-<!Space:: SendInput, {BackSpace}    ; Back by char
-+<!Space:: SendInput, {Delete}      ; Del  by char
+<!Space:: SendInput, {BackSpace}     ; Back by char
++<!Space:: SendInput, {Delete}       ; Del  by char
 ^<!Space:: SendInput, ^{BackSpace}   ; Back by word
 ^+<!Space:: SendInput, ^{Delete}     ; Del  by word
 
@@ -160,13 +163,14 @@ CapsLock & p Up::Send {Alt up}
 CapsLock & Space::Send #{Tab}
 
 ;; Cycle left a desktop environment
-#if GetKeyState("Shift", "P")
-    CapsLock & j::Send ^#{Left}
+#If GetKeyState("Shift", "P")
+CapsLock & j::Send ^#{Left}
+#If
 
 ;; Cycle right a desktop environment
-#if GetKeyState("Shift", "P")
-    CapsLock & `;::Send ^#{Right}
-
+#If GetKeyState("Shift", "P")
+CapsLock & `;::Send ^#{Right}
+#If
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ; OTHER
