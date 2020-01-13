@@ -57,10 +57,6 @@ Delete Up::Send {LWin up}
 
 LWin::return ; TODO: Implement LWin Mod key
 
-;; Backspace as Ctrl + Shift key
-Backspace::Send {Ctrl down}
-Backspace Up::Send {Ctrl up}
-
 ;#######################################################################################################################
 ;# TEST AND TODO
 ;#######################################################################################################################
@@ -114,6 +110,9 @@ Backspace Up::Send {Ctrl up}
 +<!Space:: SendInput, {Delete}       ; Del  by char
 ^<!Space:: SendInput, ^{BackSpace}   ; Back by word
 ^+<!Space:: SendInput, ^{Delete}     ; Del  by word
+
++Backspace:: SendInput, {Delete}       ; Del  by char
+<!+Backspace:: SendInput, ^{Delete}     ; Del  by word
 
 ;; Send 4 spaces
 ^+Space:: Send, {Space}{Space}{Space}{Space}
