@@ -55,8 +55,6 @@ CapsLock::SendInput, {Esc}
 Delete::Send {LWin down}
 Delete Up::Send {LWin up}
 
-LWin::return ; TODO: Implement LWin Mod key
-
 ;#######################################################################################################################
 ;# TEST AND TODO
 ;#######################################################################################################################
@@ -197,28 +195,38 @@ CapsLock & d:: Send #d ;; Show desktop
 
 ;; firefox-dev := "C:\Program Files\Firefox Developer Edition\firefox.exe" TODO: use variables for default browsers.
 
+
+
 ;; Run
-AppsKey:: Send #r
+AppsKey::
+RCtrl:: Send #r
 
 ;; Terminal
 AppsKey & t::
+RCtrl & t::
     Run, wt.exe
     ;TODO: add `WinWait, windowTitle`
     WinActivate
     return
 ;; (Productive) Browser
-AppsKey & b::Run, C:\Program Files\Firefox Developer Edition\firefox.exe
+AppsKey & b::
+RCtrl & b::
+    Run, C:\Program Files\Firefox Developer Edition\firefox.exe
+    return
 
 ;; Instructure Canvas
 AppsKey & i::
+RCtrl & i::
     Send #r
     WinWait, Run
+    Sleep, 200
     ;; TODO: replace with browser variable
     Send C:\Program Files\Firefox Developer Edition\firefox.exe https://utah.instructure.com/?login_success=1{Enter}
     return
 
 ;; Google Calendar
 AppsKey & c::
+RCtrl & c::
     Send #r
     WinWait, Run
     Send firefox https://calendar.google.com/calendar/{Enter}
@@ -226,6 +234,7 @@ AppsKey & c::
 
 ;; ToDoist
 AppsKey & d::
+RCtrl & d::
     Send #r
     WinWait, Run
     Send firefox todoist.com {Enter}
@@ -233,6 +242,7 @@ AppsKey & d::
 
 ;; Messages
 AppsKey & m::
+RCtrl & m::
     Send #r
     WinWait, Run
     Send firefox https://messages.google.com/web/conversations{Enter}
@@ -240,6 +250,7 @@ AppsKey & m::
 
 ;; VS Code
 AppsKey & v::
+RCtrl & v::
     Send #r
     WinWait, Run
     Send code{Enter}
