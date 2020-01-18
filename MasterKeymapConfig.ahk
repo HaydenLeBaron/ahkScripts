@@ -216,10 +216,11 @@ RCtrl & a::
 ;; Terminal
 AppsKey & t::
 RCtrl & t::
-    Run, wt.exe
-    ;TODO: add `WinWait, windowTitle`
-    WinActivate
+    Send #r ;; Use this instead of `Run` so that .exe's on path can be run from this terminal instance
+    WinWait, Run
+    Send wt.exe{Enter}
     return
+
 ;; (Productive) Browser
 AppsKey & b::
 RCtrl & b::
