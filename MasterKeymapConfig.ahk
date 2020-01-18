@@ -201,6 +201,18 @@ CapsLock & d:: Send #d ;; Show desktop
 AppsKey::
 RCtrl:: Send #r
 
+;; Edit Autohotkey config in terminal
+AppsKey & a::
+RCtrl & a::
+    Send, #r
+    WinWait, Run
+    Send, bash.exe {Enter}
+    Sleep, 200
+    Send, cd /mnt/c/Users/hleba/Desktop/ahkScripts/{Enter}
+    Sleep, 200
+    Send, notepad.exe MasterKeymapConfig.ahk{Enter}
+    return
+
 ;; Terminal
 AppsKey & t::
 RCtrl & t::
@@ -255,6 +267,39 @@ RCtrl & v::
     WinWait, Run
     Send code{Enter}
     return
+
+;; VcXSrv (L for Linux)
+AppsKey & l::
+RCtrl & l::
+    Send #r
+    WinWait, Run
+    Send "C:\Program Files\VcXsrv\vcxsrv.exe"{Enter}
+    Sleep, 1000
+    Send #r
+    WinWait, Run
+    Send bash.exe{Enter}
+    Sleep, 500
+    Send startlxde{Enter}
+    Sleep, 500
+    Send #{Down}
+    return
+
+;; Exist.io
+AppsKey & e::
+RCtrl & e::
+    Send #r
+    WinWait, Run
+    Send firefox https://exist.io/dashboard/{Enter}
+    return
+
+;; Rescue Time
+AppsKey & r::
+RCtrl & r::
+    Send #r
+    WinWait, Run
+    Send firefox https://www.rescuetime.com/dashboard{Enter}
+    return
+    
 
 ;#######################################################################################################################
 ;# OTHER HOTKEYS
