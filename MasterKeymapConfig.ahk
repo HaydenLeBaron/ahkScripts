@@ -1,4 +1,4 @@
-﻿;#######################################################################################################################
+;#######################################################################################################################
 ;#######################################################################################################################
 ;# HAYDEN'S WINDOWS 10 KEY & MOUSE CONFIG
 ;#######################################################################################################################
@@ -110,7 +110,7 @@ Delete Up::Send {LWin up}
 ^+<!Space:: SendInput, ^{Delete}     ; Del  by word
 
 +Backspace:: SendInput, {Delete}       ; Del  by char
-<!+Backspace:: SendInput, ^{Delete}     ; Del  by word
+^+Backspace:: SendInput, ^{Delete}     ; Del  by word
 
 ;; Send 4 spaces
 ^+Space:: Send, {Space}{Space}{Space}{Space}
@@ -210,7 +210,7 @@ RCtrl & a::
     Sleep, 200
     Send, cd /mnt/c/Users/hleba/Desktop/ahkScripts/{Enter}
     Sleep, 200
-    Send, notepad.exe MasterKeymapConfig.ahk{Enter}
+    Send, micro.exe MasterKeymapConfig.ahk{Enter}
     return
 
 ;; Terminal
@@ -224,7 +224,7 @@ RCtrl & t::
 ;; (Productive) Browser
 AppsKey & b::
 RCtrl & b::
-    Run, C:\Program Files\Firefox Developer Edition\firefox.exe
+    Run, vivaldi.exe
     return
 
 ;; Instructure Canvas
@@ -234,9 +234,64 @@ RCtrl & i::
     WinWait, Run
     Sleep, 200
     ;; TODO: replace with browser variable
-    Send C:\Program Files\Firefox Developer Edition\firefox.exe https://utah.instructure.com/?login_success=1{Enter}
+    Send firefox https://utah.instructure.com/login{Enter}
     return
 
+;; Gmail
+AppsKey & g::
+RCtrl & g::
+    Send #r
+    WinWait, Run
+    Sleep, 200
+    Send firefox https://mail.google.com/{Enter}
+    return
+    
+
+;; Wolfram Alpha
+AppsKey & w::
+RCtrl & w::
+    Send #r
+    WinWait, Run
+    Sleep, 200
+    Send firefox https://www.wolframalpha.com{Enter}
+    return
+
+;; (1) Canvas: CS3505
+AppsKey & 1::
+RCtrl & 1::
+    Send #r
+    WinWait, Run
+    Sleep, 200
+    Send firefox https://utah.instructure.com/courses/601744{Enter}
+    return
+
+;; (2) Canvas: CS4150
+AppsKey & 2::
+RCtrl & 2::
+    Send #r
+    WinWait, Run
+    Sleep, 200
+    Send firefox https://utah.instructure.com/courses/603207{Enter}
+    return
+
+;; (3) Canvas: CS3200
+AppsKey & 3::
+RCtrl & 3::
+    Send #r
+    WinWait, Run
+    Sleep, 200
+    Send firefox https://utah.instructure.com/courses/602726{Enter}
+    return
+
+;; (4) Canvas: CS3011
+AppsKey & 4::
+RCtrl & 4::
+    Send #r
+    WinWait, Run
+    Sleep, 200
+    Send firefox https://utah.instructure.com/courses/600743{Enter}
+    return
+   
 ;; Google Calendar
 AppsKey & c::
 RCtrl & c::
