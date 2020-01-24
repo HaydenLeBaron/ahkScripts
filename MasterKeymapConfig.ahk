@@ -210,7 +210,7 @@ RCtrl & a::
     Sleep, 200
     Send, cd /mnt/c/Users/hleba/Desktop/ahkScripts/{Enter}
     Sleep, 200
-    Send, micro.exe MasterKeymapConfig.ahk{Enter}
+    Send, code  MasterKeymapConfig.ahk{Enter}
     return
 
 ;; Terminal
@@ -224,7 +224,7 @@ RCtrl & t::
 ;; (Productive) Browser
 AppsKey & b::
 RCtrl & b::
-    Run, vivaldi.exe
+    Run, firefox.exe
     return
 
 ;; Instructure Canvas
@@ -234,7 +234,7 @@ RCtrl & i::
     WinWait, Run
     Sleep, 200
     ;; TODO: replace with browser variable
-    Send firefox https://utah.instructure.com/login{Enter}
+    Send vivaldi https://utah.instructure.com/login{Enter}
     return
 
 ;; Gmail
@@ -243,7 +243,7 @@ RCtrl & g::
     Send #r
     WinWait, Run
     Sleep, 200
-    Send firefox https://mail.google.com/{Enter}
+    Send vivaldi https://mail.google.com/{Enter}
     return
     
 
@@ -253,7 +253,7 @@ RCtrl & w::
     Send #r
     WinWait, Run
     Sleep, 200
-    Send firefox https://www.wolframalpha.com{Enter}
+    Send vivaldi https://www.wolframalpha.com{Enter}
     return
 
 ;; (1) Canvas: CS3505
@@ -262,7 +262,7 @@ RCtrl & 1::
     Send #r
     WinWait, Run
     Sleep, 200
-    Send firefox https://utah.instructure.com/courses/601744{Enter}
+    Send vivaldi https://utah.instructure.com/courses/601744{Enter}
     return
 
 ;; (2) Canvas: CS4150
@@ -271,7 +271,7 @@ RCtrl & 2::
     Send #r
     WinWait, Run
     Sleep, 200
-    Send firefox https://utah.instructure.com/courses/603207{Enter}
+    Send vivaldi https://utah.instructure.com/courses/603207{Enter}
     return
 
 ;; (3) Canvas: CS3200
@@ -280,7 +280,7 @@ RCtrl & 3::
     Send #r
     WinWait, Run
     Sleep, 200
-    Send firefox https://utah.instructure.com/courses/602726{Enter}
+    Send vivaldi https://utah.instructure.com/courses/602726{Enter}
     return
 
 ;; (4) Canvas: CS3011
@@ -289,7 +289,7 @@ RCtrl & 4::
     Send #r
     WinWait, Run
     Sleep, 200
-    Send firefox https://utah.instructure.com/courses/600743{Enter}
+    Send vivaldi https://utah.instructure.com/courses/600743{Enter}
     return
    
 ;; Google Calendar
@@ -297,7 +297,7 @@ AppsKey & c::
 RCtrl & c::
     Send #r
     WinWait, Run
-    Send firefox https://calendar.google.com/calendar/{Enter}
+    Send vivaldi https://calendar.google.com/calendar/{Enter}
     return
 
 ;; ToDoist
@@ -305,7 +305,7 @@ AppsKey & d::
 RCtrl & d::
     Send #r
     WinWait, Run
-    Send firefox todoist.com {Enter}
+    Send vivaldi todoist.com {Enter}
     return
 
 ;; Messages
@@ -313,7 +313,7 @@ AppsKey & m::
 RCtrl & m::
     Send #r
     WinWait, Run
-    Send firefox https://messages.google.com/web{Enter}
+    Send vivaldi https://messages.google.com/web{Enter}
     return
 
 ;; VS Code
@@ -345,7 +345,7 @@ AppsKey & e::
 RCtrl & e::
     Send #r
     WinWait, Run
-    Send firefox https://exist.io/dashboard/{Enter}
+    Send vivaldi https://exist.io/dashboard/{Enter}
     return
 
 ;; Rescue Time
@@ -353,7 +353,7 @@ AppsKey & r::
 RCtrl & r::
     Send #r
     WinWait, Run
-    Send firefox https://www.rescuetime.com/dashboard{Enter}
+    Send vivaldi https://www.rescuetime.com/dashboard{Enter}
     return
     
 
