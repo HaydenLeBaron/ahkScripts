@@ -68,40 +68,38 @@ Delete Up::Send {LWin up}
 
 
 ;; Move cursor once
-<!j:: Send {Left}
-<!;:: Send {Right}
-<!l:: Send {Up}
-<!k:: Send {Down}
+<!h:: Send {Left}
+<!l:: Send {Right}
+<!k:: Send {Up}
+<!j:: Send {Down}
 
 ;; Move cursor by word (lr) / 5 lines (ud)
-^<!j:: Send ^{Left}
-^<!`;:: Send ^{Right}
-^<!l:: Send {Up}{Up}{Up}{Up}{Up}
-^<!k:: Send {Down}{Down}{Down}{Down}{Down}
+^<!h:: Send ^{Left}
+^<!l:: Send ^{Right}
+^<!k:: Send {Up}{Up}{Up}{Up}{Up}
+^<!j:: Send {Down}{Down}{Down}{Down}{Down}
 
 ;; Move cursor once -- while highlighting
-+<!j:: Send +{Left}
-+<!;:: Send +{Right}
-+<!l:: Send +{Up}
-+<!k:: Send +{Down}
++<!h:: Send +{Left}
++<!l:: Send +{Right}
++<!k:: Send +{Up}
++<!j:: Send +{Down}
 
 ;; Move cursor by word (lr) / 5 lines (ud) -- while highlighting
-^+<!j:: Send ^+{Left}
-^+<!;:: Send ^+{Right}
-^+<!l:: Send ^+{Up}
-^+<!k:: Send ^+{Down}
+^+<!h:: Send ^+{Left}
+^+<!l:: Send ^+{Right}
+^+<!k:: Send ^+{Up}
+^+<!j:: Send ^+{Down}
 
 ;; Move cursor to beginning/end of line/page
-<!h:: Send {Home}						
-<!':: Send {End}
-<!,:: Send ^{End}			
-<!o:: Send ^{Home}
+<!6:: Send {Home}	; same key as ^
+<!4:: Send {End}    ; same key as $
+<!g:: Send ^{End}			
+<!+g:: Send ^{Home}
 
 ;; Move cursor to beginning/end of line/page -- while highlighting
-<!+h:: Send +{Home}
-<!+':: Send +{End}
-<!+,:: Send ^+{End}			
-<!+o:: Send ^+{Home}
+<!+6:: Send +{Home}
+<!+4:: Send +{End}
 
 ;; Backpace/Delete
 <!Space:: SendInput, {BackSpace}     ; Back by char
@@ -125,56 +123,56 @@ Delete Up::Send {LWin up}
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Snap current window left
-CapsLock & j::Send {LWin down}{Left}
-CapsLock & j Up::Send {LWin up}{Left}
+; CapsLock & j::Send {LWin down}{Left}
+; CapsLock & j Up::Send {LWin up}{Left}
 
 ;; Snap current window right
-CapsLock & `;::Send {LWin down}{Right}
-CapsLock & `; Up::Send {LWin up}{Right}
+; CapsLock & `;::Send {LWin down}{Right}
+; CapsLock & `; Up::Send {LWin up}{Right}
 
 ;; Snap current window down
-CapsLock & k::Send {LWin down}{Down}
-CapsLock & k Up::Send {LWin up}{Down}
+; CapsLock & k::Send {LWin down}{Down}
+; CapsLock & k Up::Send {LWin up}{Down}
 
 ;; Snap current window up
-CapsLock & l::Send {LWin down}{Up}
-CapsLock & l Up::Send {LWin up}{Up}
+; CapsLock & l::Send {LWin down}{Up}
+; CapsLock & l Up::Send {LWin up}{Up}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ; CYCLE WINDOWS
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; cycle left a window (less recent) // TODO: figure out a way to display window graphic
-CapsLock & u::Send {Alt down}+{Tab}
-CapsLock & u Up::Send {Alt up}
+; CapsLock & u::Send {Alt down}+{Tab}
+; CapsLock & u Up::Send {Alt up}
 
 ;; cycle right a window (more recent)
-CapsLock & p::Send {Alt down}{Tab}
-CapsLock & p Up::Send {Alt up}
+; CapsLock & p::Send {Alt down}{Tab}
+; CapsLock & p Up::Send {Alt up}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ; DESKTOP ENVIRONMENTS
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Open Desktops overview
-CapsLock & Space::Send #{Tab}
+; CapsLock & Space::Send #{Tab}
 
 ;; Cycle left a desktop environment
 #If GetKeyState("Shift", "P")
-CapsLock & j::Send ^#{Left}
+; CapsLock & j::Send ^#{Left}
 #If
 
 ;; Cycle right a desktop environment
 #If GetKeyState("Shift", "P")
-CapsLock & `;::Send ^#{Right}
+; CapsLock & `;::Send ^#{Right}
 #If
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ; OTHER
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-CapsLock & x:: Send !{F4} ;; Close the current window
-CapsLock & d:: Send #d ;; Show desktop
+; CapsLock & x:: Send !{F4} ;; Close the current window
+; CapsLock & d:: Send #d ;; Show desktop
 
 
 ;#######################################################################################################################
